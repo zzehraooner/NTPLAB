@@ -1,0 +1,125 @@
+using System;
+class odev4
+{
+    public static void Main(String[] args)
+    {
+      
+        //Uygulama 1
+        Console.WriteLine("48/6/4=" + (48 / 6 / 4));
+        Console.WriteLine("24/3*2=" + (24 / 3 * 2));
+        Console.WriteLine("2*2+5-1+4=" + (2 * 2 + 5 - 1 + 4));
+        Console.WriteLine("(7+4)*2-1+8/2=" + ((7 + 4) * 2 - 1 + 8 / 2));
+        Console.WriteLine("(5-1)*2-1+7*7/2" + ((5 - 1) * 2 - 1 + 7 * 7 / 2));
+
+       
+        //Uygulama 2
+        int x = 23;
+        int y = 13;
+        int z = 42;
+        Console.WriteLine(23 == 55 && 76 > 45 && 5 < 12);
+        Console.WriteLine(23 >= 23 && 45 != 18);
+        Console.WriteLine(x > y && z == y && z < x);
+        Console.WriteLine(z > x && y < x);
+        Console.WriteLine(x != z || y <= z);
+
+       
+        //Uygulama 3
+        Console.WriteLine("İki sayı giriniz:");
+        int s = Convert.ToInt32(Console.ReadLine());
+        int m = Convert.ToInt32(Console.ReadLine());
+        if(s%m==0)
+        {
+            Console.WriteLine("ikinci sayı ilk sayıya bölünür.");
+        }
+        else if(m % s == 0)
+        {
+            Console.WriteLine("birinci sayı ikinci sayıya bölünür.");
+        }
+        else
+        {
+            Console.WriteLine("sayılar birbirlerine bölünmez.");
+        }
+
+       
+        //Uygulama 4
+        Console.WriteLine("gg.aa.yyyy şeklinde tarih giriniz:");
+        int gg=Convert.ToInt32(Console.ReadLine());
+        int aa=Convert.ToInt32(Console.ReadLine());
+        int yyyy=Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Girdiğiniz tarih: " + gg + "." + aa + "." + yyyy);
+        switch (aa)
+        {
+            case (1):
+                Console.WriteLine("ocak");
+                break;
+            case (2):
+                Console.WriteLine("şubat");
+                break;
+            case (3):
+                Console.WriteLine("mart");
+                break;
+            case (4):
+                Console.WriteLine("nisan");
+                break;
+            case (5):
+                Console.WriteLine("mayıs");
+                break;
+            case (6):
+                Console.WriteLine("haziran");
+                break;
+            case (7):
+                Console.WriteLine("temmuz");
+                break;
+            case (8):
+                Console.WriteLine("ağustos");
+                break;
+            case (9):
+                Console.WriteLine("eylül");
+                break;
+            case (10):
+                Console.WriteLine("ekim");
+                break;
+            case (11):
+                Console.WriteLine("kasım");
+                break;
+            case (12):
+                Console.WriteLine("aralık");
+                break;
+        }
+        
+         //Uygulama 5
+         Console.WriteLine("ax^2+bx+c olacak şekildee ikinci dereceden denklemin a,b,c değerlerini giriniz:");
+         int a=Convert.ToInt32(Console.ReadLine());
+         int b=Convert.ToInt32(Console.ReadLine());
+         int c=Convert.ToInt32(Console.ReadLine());
+         Console.WriteLine("girdiğiniz denklem: " + a + "x^2+" + b + "x+" + c);
+                double delta = b * b - (4 * a * c);
+                if (delta > 0)
+                {
+                   double x1= (-b + Math.Sqrt(delta)) / (2*a);
+                    double x2= (-b - Math.Sqrt(delta)) / (2*a);
+                    Console.WriteLine("Denklemimizin kökleri: " + x1 + " ve " + x2 + "'dir.");
+                }
+                else if(delta < 0)
+                {
+                    Console.WriteLine("denklemin gerçel kökü yoktur.");
+                }
+                else
+                {
+                    double x3= -b/(2*a);
+                    Console.WriteLine("Denklemin çakışık tek kökü vardır ve " + x3 + "'dür.");
+                }
+
+
+        //Uygulama 6
+        Console.WriteLine("Bir derece değeri giriniz:");
+        int d=Convert.ToInt32(Console.ReadLine());
+        double grad;
+        grad = 200 * d / 180;
+        Console.WriteLine("Girilen dereceni grad değeri:" + grad);
+        double radyan;
+        radyan = d * Math.PI / 180;
+        Console.WriteLine("Girilen dereceni radyan değeri:" + radyan);
+
+    }
+    }
