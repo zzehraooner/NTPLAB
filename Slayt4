@@ -1,0 +1,193 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Hafta4OrnekUygulamalar
+{
+    internal class Program
+    {
+       //bazı örneklerde main metodundan önce metot oluşturmam gerekti ancak karışıklık olmaması adına o metotları main metodunun içine o örneğe ekledim. 
+        static void Main(string[] args)
+        {
+            //Örnek 1 (0dan 19a kadar 20 tane rastgele sayılardan dizi dizisini oluşturur ve chr dizisindeki her elemanı dizi dizisindeki elemanların sayı değeri kadar yazdırır.)
+            Random r = new Random();
+            int[] dizi = new int[20];
+            char[] chr = new char[20];
+            for(int i=0; i < 20; i++)
+            {
+                dizi[i] = r.Next(1, 51);
+                chr[i] = (char)r.Next(20, 126);
+            }
+            for(int i=0; i<20; i++)
+            {
+                Console.Write("{0,2}. değer {1,2} -> ",i,dizi[i]);
+                for(int j=0; j < dizi[i]; j++)
+                {
+                    Console.Write(chr[i]);
+                Console.WriteLine();
+                }
+            }
+            
+            
+            
+            
+            //Örnek 2 (Sırayla matris dizisindeki elemanları yazdırır)
+            int[,] dizi = { { 1, 2 }, { 3, 4 }, { 5, 6 } };
+            for(int i=0; i<3; i++)
+                for(int j=0; j<2; j++)
+                {
+                    Console.WriteLine(dizi[i,j]);
+                }
+           
+           
+           
+           
+            //Örnek 3 (Dizileri sırasıyla arada boşluk olacak şekilde yazdırır.)
+            int[][] dizi = new int[3][];
+            dizi[0] = new int[] { 1, 2 };
+            dizi[1] = new int[] { 3,4,5,6,7 };
+            dizi[2] = new int[] { 8,9,0 };
+            foreach (int[] boyut in dizi)
+            {
+                foreach (int eleman in boyut)
+                {
+                    Console.WriteLine("{0,3}", eleman);
+                }
+                Console.WriteLine();
+            }
+            
+            
+            
+            
+            
+            //Örnek 4
+            int[,] d = { { 2, 3 }, { 4, 5 }, { 6, 7 } }; 
+            d[2, 1] = 33; 
+            Console.WriteLine(d.GetValue(2, 1)); 
+            int[][] dd = new int[2][]; 
+            dd[0] = new int[2]; 
+            dd[1] = new int[1]; 
+            dd[0][0] = 23;
+            dd[0][1] = 234;
+            dd[1][0] = 44;
+            Random rnd = new Random();
+            int[] dizi = new int[3];
+            dizi[0] = rnd.Next(2, 10); // 2 ile 10 arası rastgele sayı
+            dizi[1] = rnd.Next(50); //0 ile 50 arası
+            dizi[2] = rnd.Next(); //rastgele integer değer
+            Console.WriteLine(dizi.GetValue(2));
+            Console.WriteLine(dd[1][0]);
+            
+            
+            
+            
+            
+            //Ornek5
+            string[] isimler = { "ali", "ahmet", "selda", "canan", "melike" };
+            Console.WriteLine("aranan isim:");
+            string aranan = Console.ReadLine();
+            foreach (ss in isimler)
+            {
+                if (aranan.Equals(isimler[0]))
+                    Console.WriteLine("aranan isim bulundu...");
+                else Console.WriteLine("isim yok");
+            }
+            Console.ReadKey();
+            
+            
+            
+            
+            
+            //EnBuyuk
+            static int BuyukBul(int a, int b)
+        {
+            if (a > b)
+                return a;
+            return b;
+        }
+            int s1, s2;
+            Console.WriteLine("1. sayıyı giriniz:");
+            s1=Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("2. sayıyı giriniz:");
+            s2 = Convert.ToInt32(Console.ReadLine());
+
+            int enBuyuk = BuyukBul(s1, s2);
+            Console.WriteLine("En büyük: {0}'dir",enBuyuk);
+            
+            
+            
+            
+            
+            //BuyukBul3
+            static int BuyukBul(int a, int b)
+        {
+            if (a > b)
+                return a;
+            return b;
+        }
+        static int BuyukBul3(int a, int b, int c)
+        {
+            return BuyukBul(a, BuyukBul(b, c));
+        }
+            int s1, s2, s3;
+            Console.WriteLine("1. sayıyı giriniz:");
+            s1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("2. sayıyı giriniz:");
+            s2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("3. sayıyı giriniz:");
+            s3 = Convert.ToInt32(Console.ReadLine());
+
+            int enBuyuk = BuyukBul3(s1, s2, s3);
+            Console.WriteLine("En büyük: {0}",enBuyuk);
+          
+          
+          
+          
+          
+          
+          //Örnek 
+            static void DiziYaz(int[] a, int Sekil)
+            {
+                if (Sekil == 0)
+                {
+                    foreach (Object o in a)
+                        Console.WriteLine(o.ToString() + " ");
+                }
+                else if (Sekil == 1)
+                {
+                    int x = 1;
+                    foreach (Object o in a)
+                    {
+                        Console.Write("{0,5}", o.ToString());
+                        if (x % 3 == 0)
+                            Console.WriteLine();
+                        x++;
+                    }
+                }
+                else
+                {
+                    foreach (Object o in a)
+                        Console.WriteLine(o.ToString());
+                }
+                Console.WriteLine();
+            }
+
+            int[] dizi = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            DiziYaz(dizi, 0);
+            DiziYaz(dizi, 1);
+            DiziYaz(dizi, 2);
+            
+             static void DegerTipAktarim(int Sayi)
+             {
+            Sayi = 30;
+             }
+            int x = 100;
+            Console.WriteLine(x);
+
+            DegerTipAktarim(x);
+            Console.WriteLine(x);
+        }
+    }
+}
