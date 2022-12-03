@@ -1,0 +1,61 @@
+using System;
+using System.Collections; //Bu satırlarla System ve System.Collections isim alanlarındaki türlere direkt erişim hakkı elde ettik.
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Hafta9OrnekUygulamalar
+{
+    class Koleksiyon : IEnumerable // Bu satırlarla System.Collections isim alanındaki IEnumerable arayüzünü kullanan bir sınıf başlattık.
+
+    {
+        int[] Dizi;// Bu satırla sınıfımıza (Koleksiyon) ait bir özellik bildirdik.
+        public Koleksiyon(int[] dizi)
+        { 
+            this.Dizi = dizi; // Bu satırlarla sınıfımızın (Koleksiyon) yapıcı metodunu  bildirdik.Yapıcı metodumuz int[] türünden bir parametrealıyor ve bu aldığı veriyi sınıfın bir özelliği olan Dizi'yeaktarıyor.Burada this anahtar sözcüğünün kullanılmasızorunlu değildir ancak okunurluğu artırır.
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        { 
+            return new ENumaralandırma(this);
+        }
+        class ENumaralandırma : IEnumerator
+        {
+            int indeks;
+            Koleksiyon koleksiyon;
+            public ENumaralandırma(Koleksiyon koleksiyon)
+            {
+                this.koleksiyon = koleksiyon;
+                indeks = -1;
+            }
+            public void Reset()
+            {
+                indeks = -1;
+            
+            }
+            public bool MoveNext()
+            {
+                indeks++;
+                if (indeks < koleksiyon.Dizi.Length)
+                    return true;
+                else return false;
+            }
+            object IEnumerator.Current
+            {
+                get { return (koleksiyon.Dizi[indeks]); }
+            }
+        }
+    }
+    class MainMetodu
+    {
+        static void Main()
+        {
+            int[] dizi = { 1, 2, 3, 8, 6, 9, 7 };
+            Koleksiyon k = new Koleksiyon(dizi);
+            foreach (int i in k)
+                Console.Write(i + " ");
+        }
+    }
+
+}
+
