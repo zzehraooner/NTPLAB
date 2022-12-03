@@ -1,0 +1,308 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Hafta5OrnekUygulamalar
+{
+   
+internal class Program
+        {
+            static void Main(string[] args)
+            {
+            //main metodundan önce yazılması gereken metotları karışıklık olmaması adına ilgili sorunun hemen üst kısmına yazdım aynı dosya içerisinde yorum satırı olarak tanımlaya tanımlaya bütün kodların çıktılarını kontrol ettim ve sorularla ilgili açıklamaları soruların üst kısmına yorum satırı olarak belirttim. 
+       
+       
+             //Öğrenci sınıfı tanımlayıp o sınıftaki değişkenleri nesne tanımlayarak kullandık.    
+                class Ogrenci     
+            {
+                public ulong OgrenciNo;
+                public string Ad;
+                public string Soyad;
+                public string Bolum;
+                public byte Sinif;
+            }
+            Ogrenci ogr = new Ogrenci();
+                Console.WriteLine(ogr.OgrenciNo);
+                Console.WriteLine(ogr.Ad);
+                Console.WriteLine(ogr.Soyad);
+                Console.WriteLine(ogr.Bolum);
+                Console.WriteLine(ogr.Sinif);
+
+
+
+
+
+            //Kredi hesabı sınıfını oluşturup bu sınıftan hesap1 ve hesap2 nesnelerini oluşturduk. sonrasında bu nesnelere hesapno değeri atadık ve yazdırdık.
+              class KrediHesabi
+              {
+              public ulong HesapNo;
+              }
+
+              KrediHesabi hesap1 = new KrediHesabi();
+                KrediHesabi hesap2 = new KrediHesabi();
+                hesap1.HesapNo = 34567;
+                hesap2.HesapNo = 11112;
+                Console.WriteLine(hesap1.HesapNo);
+                Console.WriteLine(hesap2.HesapNo);
+
+
+
+
+            //
+            class SinifBildirimi
+            {             
+            public int ozellik1 = 55; // başlangıç değerleri verildi.
+            public string ozellik2 = "deneme";
+            public float ozellik3 = 123.78f;
+            int metot1(int a, int b)
+            {
+                return a+b; 
+            }
+            public void metot2(string a)
+            { 
+                Console.WriteLine(a); 
+            } 
+
+             SinifBildirimi nesne = new SinifBildirimi(); 
+             Console.WriteLine(nesne.ozellik1);
+             Console.WriteLine(nesne.ozellik2); 
+             Console.WriteLine(nesne.ozellik3);
+             Console.WriteLine(nesne.metot1(2, 5));
+             nesne.metot2("deneme");
+
+
+
+
+
+            //En ve boy bilgilerine göre alan hesabı yapan program.
+            class Dortgen
+        {
+        public int en;
+        public int boy;
+        public int Alan()
+        {
+            int Alan = en * boy;
+            return Alan;
+        }
+        public void enBoyBelirle(int e, int b)
+        {
+            en = e;
+            boy = b;
+        }
+        public void yaz()
+        {
+            Console.WriteLine("*****************");
+            Console.WriteLine("En:{0,5}",en);
+            Console.WriteLine("Boy:{0,5}",boy);
+            Console.WriteLine("Alan:{0,5}", Alan());
+            Console.WriteLine("*****************");
+        }
+    }
+            Dortgen d1 = new Dortgen();
+            d1.enBoyBelirle(27, 12);
+            d1.yaz();
+            Dortgen d2 = new Dortgen();
+            d2.enBoyBelirle(23, 6);
+            d2.yaz();
+
+
+
+
+
+
+        //Nesne tanımlamadığımız için bu örnek hata verir. Nesne üzerinden bu özellik ve metotlara erişilmeli. 
+            class Dortgen { 
+            public int en = 20;
+        public int boy = 5;
+        public int Alan()
+        {
+            int Alan = en * boy;
+            return Alan;
+        }
+        Console.WriteLine("*****************");
+            Console.WriteLine("En:{0,5}", en);
+            Console.WriteLine("Boy:{0,5}", boy);
+            Console.WriteLine("Alan:{0,5}", Alan());
+            Console.WriteLine("*****************");
+
+
+
+
+
+
+
+            //Bu örnekte özellikler static şekilde tanımlanmadığı için hata veriyor.
+            class Dortgen
+        {
+            public int En = 30; 
+            public int Boy = 23;
+            public int Alan()
+            {
+                int Alan = En * Boy;
+                return Alan;
+            }
+            yaz d1 = new yaz();
+            d1.Yaz();
+            }
+        class yaz
+        {
+            public void Yaz()
+            {
+                Console.WriteLine("En:{0,5}", Dortgen.En);
+                Console.WriteLine("Boy:{0,5}", Dortgen.Boy);
+                Console.WriteLine("Alan:{0,5}", Dortgen.Alan());
+            }
+        }
+
+
+
+
+
+        // Bu örnekte konsolda 50 ve 100 değerleri yazdırılır.
+        class Dortgen
+        {
+                int En;
+                int Boy;
+        }
+                int En = 50;
+                int Boy = 100;
+          Console.WriteLine(En+"\n"+Boy);
+         }
+
+
+
+
+
+
+            //Bu örnekte konsolda yine 50 ve 100 yazdırılır çünkü main metodunda en ve boy 50'ye 100 olarak değiştirilmiştir.
+            class Dortgen
+            {
+                int En=8;
+                int Boy=3;
+            }
+            int En = 50;
+            int Boy = 100;
+            Console.WriteLine(En+"\n"+Boy);
+
+
+
+
+
+
+
+
+            //Bu program hata verir. Değişkenler static olarak değiştirilirse hata vermez. Ya da diğer bir çözüm yolu olarak nesne üzerinden değişkenlere erişilebilir.
+            class Dortgen
+        {
+            int En = 8;
+            int Boy = 3;
+        }
+        int Boy = 100;
+            Console.WriteLine(En + "\n" + Boy);
+        }
+
+
+
+
+
+
+         //1den 100e kadar olan sayıların toplamını bulan program.
+            class Topla
+        {
+        public int tpl;
+        public Topla(int toplam)
+        {
+            tpl = toplam;
+        }
+        public int Toplama
+        {
+            get
+            {
+                return tpl;
+            } // değeri görüntüleme
+            set
+            {
+                tpl = value + tpl;
+            } // yeni değeri depola
+        }
+
+        Topla ekle = new Topla(0);
+        Console.WriteLine("Başlangıç değeri->" + ekle.Toplama);
+        for (int i = 1; i < 100; i++) ekle.Toplama = i; 
+         Console.WriteLine("Sayıların toplamı" + ekle.Toplama);
+        }
+
+
+
+
+
+
+//Çıktı:
+//X = 5 
+//Y = 6
+//X = -1
+//Y = 1
+//X = 7 
+//Y = 1
+        class Toplama
+        {
+        public int X;
+        public int Y;
+
+        public Toplama(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+        public Toplama() : this(-1, 1)
+        {
+
+        }
+        public Toplama(int x) : this(x, 1)
+        {
+
+        }
+        public int Islem()
+        {
+            return X + Y;
+        }
+        public void Yaz()
+        {
+            Console.WriteLine("X = {0}", X);
+            Console.WriteLine("Y = {0}", Y);
+        }
+        }
+        Toplama t = new Toplama(5,6);
+        t.Yaz();
+        Toplama y = new Toplama();
+        y.Yaz();
+        Toplama u = new Toplama(7);
+        u.Yaz();
+            
+
+            
+            
+            
+            
+       //
+            public int Zar()
+            {
+                Random rnd = new Random(); 
+                return rnd.Next(1, 7);
+            }
+            public static void metotlar(int a, int b, int c)
+            { 
+                Console.WriteLine("a= " + a + " b= " + b + " c= " + c); 
+            }
+   
+             Program a = new Program();
+             metotlar(a.Zar(), a.Zar(), a.Zar());
+            */
+        }
+    }
+    
+}
+        
+
