@@ -1,0 +1,232 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+enum notu: byte { basarisiz, basarili }
+enum gunler: byte
+{
+        PAZARTESİ,
+        SALİ,
+        CARSAMBA,
+        PERSEMBE,
+        CUMA,
+        CUMARTESİ,
+        PAZAR
+}
+
+namespace Hafta6OrnekUygulamalar
+{
+    
+    class Zaman
+    {
+        public int Saat;
+        public int Dakika;
+        public int Saniye;
+        public Zaman(int saat, int dakika, int saniye)
+        {
+            Dakika = dakika + saniye / 60;
+            Saniye = saniye % 60;
+            Saat = saat + Dakika / 60;
+            Dakika = Dakika % 60;
+        }
+        public static Zaman operator +(Zaman a, Zaman b)
+        {
+            int ToplamSaniye = a.Saniye + b.Saniye;
+            int ToplamDakika = a.Dakika + b.Dakika;
+            int ToplamSaat = a.Saat + b.Saat;
+            return new Zaman(ToplamSaat, ToplamDakika, ToplamSaniye);
+        }
+        public static Zaman operator +(Zaman a, int b)
+        {
+            int toplamSaniye = a.Saniye + b;
+            return new Zaman(a.Saat, a.Dakika, a.Saniye);
+        }
+        public static string operator +(Zaman a, Zaman b)
+        {
+            int ToplamSaniye = a.Saniye + b.Saniye;
+            int ToplamDakika = a.Dakika + b.Dakika;
+            int ToplamSaat = a.Saat + b.Saat;
+            Zaman nesne = new Zaman(ToplamSaat, ToplamDakika, ToplamSaniye);
+            return nesne.Saat + "." + nesne.Dakika + "." + nesne.Saniye;
+        }
+        public static bool operator ==(Zaman a, Zaman b)
+        {
+            if (a.Saniye == b.Saniye && a.Dakika == b.Dakika && a.Saat == b.Saat)
+                return true;
+            else
+                return false;
+        }
+        public static bool operator !=(Zaman a, Zaman b)
+        {
+        return !(a==b);
+        }
+        public static bool operator |(Zaman a, Zaman b)
+        {
+        if(a.Saat>12 || b.Saat>12)
+        return true;
+        else
+        return false;
+        }
+     }
+    
+     
+
+
+
+    class Sinif
+    {
+        public int Sayi;
+        public Sinif(int sayi)
+        {
+            Sayi = sayi;
+        }
+      //  public static implicit operator int(Sinif a)
+      //  {
+      //     return a.Sayi;
+      //  }
+        public static explicit operator int(Sinif a)
+        {
+            return a.Sayi;
+        }
+    }
+
+    
+
+
+    class indeksleyici
+    {
+        public double rakam;
+        public double this[double index]
+        {
+            get {return Math.Pow(index,2); }
+            set {rakam= value; }
+        }
+
+    }
+    
+
+
+
+
+
+
+    struct universite
+    {
+        public string fakulte;
+        public string bolum;
+        public string ogr_gor;
+        public universite(string a, string b, string c)
+        {
+            fakulte = a;
+            bolum = b;
+            ogr_gor = c;
+
+        }
+    }
+    
+
+    
+internal class Program
+    {
+        
+        struct Ogrenci
+        {
+            public int Numara;
+            public string Ad;
+            public string Soyad;
+        }
+        
+        static void Main(string[] args)
+        {
+            
+            //saat dakika ve saniye olarak verilen değerleri toplayıp 3. bir zamanın saat dakika ve saniye olarak değerini verir.
+
+            Zaman zaman1 = new Zaman(5, 59, 60);
+            Zaman zaman2 = new Zaman(2, 35, 40);
+            if (zaman1)
+            Console.WriteLine("Öğleden sonra");
+            else
+            Console.WriteLine("Öğleden önce");
+            if (zaman2)
+            Console.WriteLine("Öğleden sonra");
+            else
+            Console.WriteLine("Öğleden önce");
+            
+
+
+
+            //
+            Sinif a = new Sinif(50);
+            int b = (int)a;
+            Console.WriteLine(b);
+            
+
+
+
+            //
+            indeksleyici i = new indeksleyici();
+            Console.WriteLine("i[3.4]={0}", i[3.4]);
+            i[10] = 10;
+            Console.WriteLine(i.rakam);
+            i[10] = 15;
+            Console.WriteLine(i.rakam);
+            Console.WriteLine("i[10] ={0}", i[10]);
+
+            
+
+
+            //ogr1 ve ogr2nin özelliklerini eşitledikten sonra ogr2nin numarasını değiştirerek farklı iki nesne oluşturur. numaraları farklı ama ad soyadları aynı şekilde yazdırılırlar.
+            Ogrenci ogr1 = new Ogrenci();
+            ogr1.Numara = 27;
+            ogr1.Ad = "Zehra";
+            ogr1.Soyad = "Öner";
+
+            Ogrenci ogr2 = ogr1;
+            ogr2.Numara = 456;
+            Console.WriteLine("{0} {1} {2} ", ogr1.Numara, ogr1.Ad, ogr1.Soyad);
+            Console.WriteLine("{0} {1} {2} ", ogr2.Numara, ogr2.Ad, ogr2.Soyad);
+
+            
+
+
+
+            //byte türü notu türüne bilinçli olarak dönüşür.
+            notu a = notu.basarili;
+            if (a == (notu)1)
+                Console.Write("Başarılısınız.")
+            else
+                Console.Write("Başarısızsınız.");
+
+
+            
+
+
+
+            universite k1 = new universite("Teknoloji Fakültesi", "Yazılım Mühendisliği", "2. sınıf");
+            universite k2;
+            Console.WriteLine(k1.fakulte);
+            Console.WriteLine(k1.bolum);
+            Console.WriteLine(k1.ogr_gor);
+            k2.fakulte = "Tıp Fakültesi";
+            Console.WriteLine();
+            Console.WriteLine(k2.fakulte);
+
+            
+
+
+
+            //alttaki kod satırları enumdaki günlerin indeks değerini döndürür.
+            Console.WriteLine((int)gunler.PAZARTESİ);
+            Console.WriteLine((int)gunler.PAZAR);
+
+
+            //günleri sırasıyla yazdırır.
+            string[] sabitler= Enum.GetNames(typeof(gunler));
+            foreach (string s in sabitler) 
+            Console.WriteLine(s);
+
+        }
+    }
+}
+
