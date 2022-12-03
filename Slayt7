@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Hafta7OrnekUygulamalar
+{
+    
+    class Deneme
+    {
+        public int a;
+        public int b;
+
+        public Deneme(int a, int b)
+        {
+            this.a = a;
+            this.b = b;
+        }
+        public static int Topla(int x, int y)
+        {
+            return x + y;
+        }
+    }
+    
+
+
+
+
+
+    namespace isimalani1
+    {
+        class Deneme
+        {
+            public Deneme()
+            {
+                Console.WriteLine("Deneme1");
+            }
+        }
+    }
+
+
+    namespace isimalani2
+    {
+        class Deneme
+        {
+            public Deneme()
+            {
+                Console.WriteLine("Deneme2");
+            }
+        }
+    }
+
+
+    namespace isimalani3
+    {
+        class Deneme
+        {
+            public Deneme()
+            {
+                Console.WriteLine("Deneme3");
+            }
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            
+            Hafta7OrnekUygulamalar.Deneme d = new Hafta7OrnekUygulamalar.Deneme(1, 2);
+            Console.WriteLine(d.a);
+            Console.WriteLine(Hafta7OrnekUygulamalar.Deneme.Topla(2, 3));
+            
+
+
+
+
+
+            isimalani1.Deneme d1 = new isimalani1.Deneme();
+            isimalani2.Deneme d2 = new isimalani2.Deneme();
+
+
+
+        }
+    }
+}
